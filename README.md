@@ -1,1 +1,9 @@
 # CAR_T-Cell_Target_Discovery
+Using scRNA-seq, machine learning, and online datasets to find candidate target antigens for repurposing CAR T-cell therapy for autoimmune diseases. Please note that the k-fold cross validation code was adopted from Bannigan et al. under the MIT license (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9832011/). Datasets, as well as older notebook versions, can be found within the original notebooks on Kaggle: https://www.kaggle.com/nooralrajab
+
+## Files, in order of process:
+- RTP ratio assessment using CITE-seq.ipynb: CITE-seq dataset is used to generate data later used for machine learning models. scRNA-seq provides RNA sequences, and CITE-seq provides RNA sequences with antibody capture data, therefore reporting both genes and actual protein abundances for just under 200 proteins.
+- Antigen Abundance Prediction - Bulk Cell.ipynb: predicting quantile lines in proteins-vs-transcripts plots using Decision Tree, Random Forest, and Elastic Net models.
+- Antigen Abundance Prediction - Inter-cluster.ipynb: predicting the protein abundance of each cluster of cells given their median number of transcripts.
+- Inter-cluster figure generation.ipynb: generates scatter plots where each data point represents a cell cluster with a median number of transcripts and a median protein abundance. 3 main figures are generated: one is colored by cell type, one is colored by batch, one shows the Random Forest and Ridge model predictions for each gene on the protein-vs-transcripts graphs.
+- CAR T-Cell Therapy Target Assessment.ipynb: the models are used to generate a heatmap of antigen scores, a list of candidate genes ranked by score, as well as a antigen abundance vs disease-related proteins plot to compare antigen choices in terms of sensitivity and specificity.
